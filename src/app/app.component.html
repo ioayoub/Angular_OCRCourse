@@ -1,15 +1,33 @@
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12">
-            <h2>Mes appareils</h2>
-            <br>
-            <p> last update : {{ lastUpdateDate | async }} </p>
-            <ul class="list-group">
-                <app-appareil *ngFor='let appareil of appareils' [appareilName]='appareil.name'
-                    [appareilStatus]='appareil.status'></app-appareil>
-            </ul>
-            <br>
-            <button class='btn btn-success' [disabled]='!isAuth' (click)='onAllumer()'>Tout allumer</button>
+<div class='container-fluid'>
+    <nav class='navbar navbar-expand-sm bg-light navbar-light'>
+        <ul class='navbar-nav'>
+            <li routerLinkActive='active'>
+                <a class='nav-link' routerLink=''>Home</a>
+            </li>
+            <li routerLinkActive='active'>
+                <a class='nav-link' routerLink='auth'>Authentification</a>
+            </li>
+            <li routerLinkActive='active'>
+                <a class='nav-link' routerLink='appareils'>Appareils</a>
+            </li>
+            <li routerLinkActive='active'>
+                <a class='nav-link' routerLink='edit'>Nouvel appareil</a>
+            </li>
+            <li routerLinkActive='active'>
+                <a class='nav-link' routerLink='users'>Utilisateurs</a>
+            </li>
+            <li class='nav-link'>
+                You are connected since : {{ secondes }} secondes.
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+
+    <div class='container'>
+        <div class='row'>
+            <router-outlet></router-outlet>
         </div>
     </div>
-</div>

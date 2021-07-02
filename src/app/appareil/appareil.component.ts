@@ -1,5 +1,5 @@
+import { AppareilService } from './../services/appareil.service';
 import { Component, Input, OnInit } from '@angular/core';
-import { bindCallback } from 'rxjs';
 
 @Component({
   selector: 'app-appareil',
@@ -10,7 +10,11 @@ export class AppareilComponent implements OnInit {
 
   @Input() appareilName?: string;
   @Input() appareilStatus?: string;
-  constructor() {
+  @Input() indexOfAppareil!: number;
+  @Input() id !: number;
+
+
+  constructor(private AppareilService: AppareilService) {
     //..
 
 
@@ -40,6 +44,13 @@ export class AppareilComponent implements OnInit {
 
   }
 
+  onSwitchOn() {
+    this.AppareilService.switchOnOne(this.indexOfAppareil);
+  }
+
+  onSwitchOff() {
+    this.AppareilService.switchOffOne(this.indexOfAppareil);
+  }
 
 }
 
